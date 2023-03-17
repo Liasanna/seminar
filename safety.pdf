@@ -1,0 +1,35 @@
+touch filetest
+touch filetest2
+chmod u=rw, g=rw, o=r filetest
+chmod u=, g=, o=r filetest2
+chmod 664 filetest
+chmod 600 filetest
+
+chown -R db: www-data test/
+
+useradd -s /bin/bash -m -d /home/test test
+adduser test2
+userdel test2
+
+groupadd testgr
+addgroup testgr2
+usermod -g testgr test2
+usermod -aG testgr2 test2
+
+usermod -aG sudo test2
+visudo (NOPASSWD)
+
+visudo (/bin/ls, /bin/passwd)
+
+groupadd developer
+usermod -aG developer test2
+mkdir dev
+chgrp -R developer dev
+chmod g+s dev
+umask 002
+
+mkdir share
+chmod +t share
+
+mkdir spec
+chmod -r spec
